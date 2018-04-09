@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1 id="main">Kodilla First Java Script Code</h1>
+
+<button id="button-1">I am waiting</button>
+
+<script>
+ var button = document.getElementById('button-1');
+
+ button.addEventListener('click', function() {
+   button.innerHTML = 'I am clicked';
+ });
+ 
+ 
+function changeColor(newColor)
+{
+ var elem = document.getElementById("main");
+ elem.style.color = newColor;
+}
+
+
+</script>
+
+<p id="para1">Jakiś tekst</p>
+<button onclick="changeColor('blue');">niebieski</button>
+<button onclick="changeColor('red');">czerwony</button>
+
+</body>
+</html>
