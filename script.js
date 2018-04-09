@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  var apiRoot = 'https://guarded-dusk-74142.herokuapp.com/v1/task/';
+  var apiRoot = 'https://guarded-dusk-74142.herokuapp.com/v1/task/getTasks';
   var datatableRowTemplate = $('[data-datatable-row-template]').children()[0];
   var tasksContainer = $('[data-tasks-container]');
 
