@@ -8,55 +8,56 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i&amp;subset=latin-ext" rel="stylesheet">
 </head>
 <body>
-
-
 <center>
-<h1 class="kodilla-heading kodilla-heading--main" id="main_1">Library Apalication </h1> <p> 
-<h3 id="main_2">add new user to database (SQL)</h3>
+<h1 class="kodilla-heading kodilla-heading--main" id="main_1">Library
+Application </h1>
+<p> </p>
+<h3 id="main_2">add new user to database</h3>
 
-
-
-<!Mo¿na by to zrobiæ przy pomocy tablicy  i petli for albo querySelectorAll() -ale to tylko zabawa > 
 <script>
 function changeColor(newColor)
 
- {
- var elem = document.getElementById("main_1");
+{
+ 
+var elem1 = document.getElementById("main_1");
 
- elem.style.color = newColor;
-var elem = document.getElementById("main_2");
+ elem1.style.color = newColor;
+var elem2 = document.getElementById("main_2");
 
- elem.style.color = newColor;
+ elem2.style.color = newColor;
 var elem = document.getElementById("row_1");
 
  elem.style.color = newColor;
 var elem = document.getElementById("row_2");
 
  elem.style.color = newColor;
-}
 
+
+}
 </script>
 
  
-<button type="submit" data-task-add-button="" class="datatable__button" onclick="changeColor('white');">Change main text color: to white (click)</button>
 
-<button type="submit" data-task-add-button="" class="datatable__button"onclick="changeColor('black');">Change main text color: to black (click)</button>
+</script> <button type="submit" data-task-add-button="" class="datatable__button" onclick="changeColor('white');">Change
+main text color: to white (click)</button>
+
+
+<button type="submit" data-task-add-button="" class="datatable__button" onclick="changeColor('black');">Change
+main text color: to black (click)</button>
+
 
 </center>
-
 <main class="crud container"> <section class="datatable"> </section></main>
-
-
 <h2 id="row_1">Add a new User</h2>
-<form class="datatable__row datatable__row--add" method="post" action="'https://shrouded-taiga-70668.herokuapp.com/v1/library/createUser" data-task-add-form="">
+<form class="datatable__row datatable__row--add" method="post" action="http://localhost:8080/v1/library/createUser" data-task-add-form="">
 <fieldset class="datatable__row-section datatable__row-section--input-section">User
 First Name <input name="firstName" placeholder="Insert User Name" required="" minlength="3">
 </fieldset>
 <fieldset class="datatable__row-section datatable__row-section--input-section">
 User Last Name&nbsp;<br>
-<input name="lastName" placeholder="Insert User Last Name" required="" minlength="3">
-<br>User Registartion Date (RRRR-MM-DD) <br>
-<input name="registartionDate" placeholder="Insert User registartionDate RRRR-MM-DD" required="" minlength="10" maxlength="10"> </fieldset>
+<input name="lastName" placeholder="Insert User Last Name" required="" minlength="3"><br>
+User Registartion Date <br>
+<input name="registartionDate" placeholder="Insert User registartionDate" required="" minlength="3"> </fieldset>
 <fieldset class="datatable__row-section datatable__row-section--button-section">
 <button type="submit" data-task-add-button="" class="datatable__button">Add a User</button> </fieldset>
 </form>

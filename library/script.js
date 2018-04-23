@@ -5,7 +5,7 @@ $(document).ready(function() {
   var tasksContainer = $('[data-tasks-container]');
 
    // init
-  getAllTasks();
+  getUsers();
 
   function createElement(data) {
     var element = $(datatableRowTemplate).clone();
@@ -30,7 +30,7 @@ $(document).ready(function() {
     });
   }
 
-  function getAllTasks() {
+  function getUsers() {
     var requestUrl = apiRoot + 'getUsers';
 
     $.ajax({
@@ -58,17 +58,17 @@ $(document).ready(function() {
         userId: userId,
  
 	firstName: firstName,
-
    	lastName: lastName,
- 
-	registartionDate:registartionDate
+ 	registartionDate:registartionDate
+	
       }),
-      success: function(data) {
-        parentEl.attr('data-task-id', data.userId).toggleClass('datatable__row--editing');
+	    complete: function(data) {
+		parentEl.attr('data-task-id', data.userId).toggleClass('datatable__row--editing');
         parentEl.find('[data-task-name-paragraph]').text(taskTitle);
         parentEl.find('[data-task-content-paragraph]').text(taskContent);
-      }
+       }
     });
+	getUsers();
   }
 
   function handleTaskDeleteRequest() {
@@ -93,7 +93,6 @@ $(document).ready(function() {
     var firstName = $(this).find('[name="firstName"]').val();
     var lastName = $(this).find('[name="lastName"]').val();
     var registartionDate = $(this).find('[name="registartionDate"]').val();
-
     var requestUrl = apiRoot + 'createUser';
 
     $.ajax({
@@ -109,7 +108,7 @@ $(document).ready(function() {
       }),
       complete: function(data) {
         if(data.status === 200) {
-          getAllTasks();
+          getUsers();
         }
       }
     });
