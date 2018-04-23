@@ -25,8 +25,8 @@ $(document).ready(function() {
 
   function handleDatatableRender(data) {
     tasksContainer.empty();
-    data.forEach(function(user) {
-      createElement(user.appendTo(tasksContainer);
+    data.forEach(function(task) {
+      createElement(task.appendTo(tasksContainer);
     });
   }
 
