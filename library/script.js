@@ -3,9 +3,9 @@ $(document).ready(function() {
   var apiRoot = 'https://shrouded-taiga-70668.herokuapp.com/v1/library/';
   var datatableRowTemplate = $('[data-datatable-row-template]').children()[0];
   var tasksContainer = $('[data-tasks-container]');
-
-   // init
-  getUsers);
+   
+ // init
+  getUsers();
 
   function createElement(data) {
     var element = $(datatableRowTemplate).clone();
@@ -26,7 +26,7 @@ $(document).ready(function() {
   function handleDatatableRender(data) {
     tasksContainer.empty();
     data.forEach(function(task) {
-      createElement(task.appendTo(tasksContainer);
+      createElement(task).appendTo(tasksContainer);
     });
   }
 
@@ -40,30 +40,36 @@ $(document).ready(function() {
     });
   }
 
-function handleTaskSubmitRequest(event) {
-    event.preventDefault();
-
-    var firstName = $(this).find('[name="firstName"]').val();
-    var lastName = $(this).find('[name="lastName"]').val();
-    var registartionDate = $(this).find('[name="registartionDate"]').val();
-    var requestUrl = apiRoot + 'createUser';
+  function handleTaskUpdateRequest() {
+    var parentEl = $(this).parent().parent();
+    var userId = parentEl.attr('data-task-id');
+    var firstName = parentEl.find('[data-task-name-input]').val();
+    var lastName = parentEl.find('[data-task-content-input]').val();
+    var registartionDate = parentEl.find('[data-task-registrateDate-input]').val();
+    var requestUrl = apiRoot + 'updateUser';
 
     $.ajax({
       url: requestUrl,
-      method: 'POST',
+      method: "PUT",
       processData: false,
       contentType: "application/json; charset=utf-8",
       dataType: 'json',
       data: JSON.stringify({
-        firstName: firstName,
-        lastName: lastName,
-         registartionDate:registartionDate
+        userId: userId,
+ 
+	firstName: firstName,
+
+   	lastName: lastName,
+ 
+	registartionDate:registartionDate
       }),
+	
       complete: function(data) {
         if(data.status === 200) {
           getUsers();
         }
       }
+	 
     });
   }
 
@@ -89,7 +95,6 @@ function handleTaskSubmitRequest(event) {
     var firstName = $(this).find('[name="firstName"]').val();
     var lastName = $(this).find('[name="lastName"]').val();
     var registartionDate = $(this).find('[name="registartionDate"]').val();
-
     var requestUrl = apiRoot + 'createUser';
 
     $.ajax({
@@ -101,7 +106,7 @@ function handleTaskSubmitRequest(event) {
       data: JSON.stringify({
         firstName: firstName,
         lastName: lastName,
-        registartionDate:registartionDate
+         registartionDate:registartionDate
       }),
       complete: function(data) {
         if(data.status === 200) {
