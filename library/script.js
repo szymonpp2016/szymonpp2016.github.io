@@ -87,12 +87,13 @@ $(document).ready(function() {
     })
   }
 
-  function handleTaskSubmitRequest(event) {
+
+   function handleTaskSubmitRequest(event) {
     event.preventDefault();
 
     var firstName = $(this).find('[name="firstName"]').val();
-    var lastNamet = $(this).find('[name="lastName"]').val();
-     var lastNamet = $(this).find('[name="registartionDate"]').val();
+    var lastName = $(this).find('[name="lastName"]').val();
+    var registartionDate = $(this).find('[name="registartionDate"]').val();
 
     var requestUrl = apiRoot + 'createUser';
 
@@ -104,10 +105,8 @@ $(document).ready(function() {
       dataType: 'json',
       data: JSON.stringify({
         firstName: firstName,
-
-   	lastName: lastName,
- 
-	registartionDate: registartionDate
+        lastName: lastName,
+         registartionDate:registartionDate
       }),
       complete: function(data) {
         if(data.status === 200) {
@@ -116,6 +115,8 @@ $(document).ready(function() {
       }
     });
   }
+
+
 
   function toggleEditingState() {
     var parentEl = $(this).parent().parent();
