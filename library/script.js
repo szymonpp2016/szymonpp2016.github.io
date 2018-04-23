@@ -3,9 +3,9 @@ $(document).ready(function() {
   var apiRoot = 'https://shrouded-taiga-70668.herokuapp.com/v1/library/';
   var datatableRowTemplate = $('[data-datatable-row-template]').children()[0];
   var tasksContainer = $('[data-tasks-container]');
-   
-	// init 3
-	 getUsers();
+
+   // init
+  getAllTasks();
 
   function createElement(data) {
     var element = $(datatableRowTemplate).clone();
@@ -30,7 +30,7 @@ $(document).ready(function() {
     });
   }
 
-  function getUsers() {
+  function getAllTasks() {
     var requestUrl = apiRoot + 'getUsers';
 
     $.ajax({
@@ -58,17 +58,17 @@ $(document).ready(function() {
         userId: userId,
  
 	firstName: firstName,
+
    	lastName: lastName,
- 	registartionDate:registartionDate
-	
+ 
+	registartionDate:registartionDate
       }),
-	    complete: function(data) {
-		parentEl.attr('data-task-id', data.userId).toggleClass('datatable__row--editing');
+      success: function(data) {
+        parentEl.attr('data-task-id', data.userId).toggleClass('datatable__row--editing');
         parentEl.find('[data-task-name-paragraph]').text(taskTitle);
         parentEl.find('[data-task-content-paragraph]').text(taskContent);
-       }
+      }
     });
-	getUsers();
   }
 
   function handleTaskDeleteRequest() {
@@ -93,6 +93,7 @@ $(document).ready(function() {
     var firstName = $(this).find('[name="firstName"]').val();
     var lastName = $(this).find('[name="lastName"]').val();
     var registartionDate = $(this).find('[name="registartionDate"]').val();
+
     var requestUrl = apiRoot + 'createUser';
 
     $.ajax({
@@ -108,7 +109,7 @@ $(document).ready(function() {
       }),
       complete: function(data) {
         if(data.status === 200) {
-          getUsers();
+          getAllTasks();
         }
       }
     });
