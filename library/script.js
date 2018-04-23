@@ -63,13 +63,12 @@ $(document).ready(function() {
  
 	registartionDate:registartionDate
       }),
-	    complete: function(data) {
-		parentEl.attr('data-task-id', data.userId).toggleClass('datatable__row--editing');
+      success: function(data) {
+        parentEl.attr('data-task-id', data.userId).toggleClass('datatable__row--editing');
         parentEl.find('[data-task-name-paragraph]').text(taskTitle);
         parentEl.find('[data-task-content-paragraph]').text(taskContent);
-       }
+      }
     });
-	//getUsers();
   }
 
   function handleTaskDeleteRequest() {
