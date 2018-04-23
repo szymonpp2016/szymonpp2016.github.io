@@ -58,10 +58,9 @@ $(document).ready(function() {
         userId: userId,
  
 	firstName: firstName,
-
    	lastName: lastName,
- 
-	registartionDate:registartionDate
+ 	registartionDate:registartionDate
+	
       }),
       success: function(data) {
         parentEl.attr('data-task-id', data.userId).toggleClass('datatable__row--editing');
@@ -69,6 +68,12 @@ $(document).ready(function() {
         parentEl.find('[data-task-content-paragraph]').text(taskContent);
       }
     });
+		complete: function(data) {
+        if(data.status === 200) {
+          getUsers();
+        }
+      }
+  
   }
 
   function handleTaskDeleteRequest() {
@@ -105,7 +110,7 @@ $(document).ready(function() {
       data: JSON.stringify({
         firstName: firstName,
         lastName: lastName,
-         registartionDate:registartionDate
+        registartionDate:registartionDate
       }),
       complete: function(data) {
         if(data.status === 200) {
