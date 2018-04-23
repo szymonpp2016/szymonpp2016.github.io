@@ -4,8 +4,8 @@ $(document).ready(function() {
   var datatableRowTemplate = $('[data-datatable-row-template]').children()[0];
   var tasksContainer = $('[data-tasks-container]');
    
- // init
- getUsers();
+	// init 2
+	getUsers();
 
   function createElement(data) {
     var element = $(datatableRowTemplate).clone();
@@ -69,7 +69,7 @@ $(document).ready(function() {
         parentEl.find('[data-task-content-paragraph]').text(taskContent);
        }
     });
-	getUsers();
+	//getUsers();
   }
 
   function handleTaskDeleteRequest() {
