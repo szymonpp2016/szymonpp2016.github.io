@@ -5,7 +5,7 @@ $(document).ready(function() {
   var tasksContainer = $('[data-tasks-container]');
    
 	// init 3
-	getUsers();
+	 getUsers();
 
   function createElement(data) {
     var element = $(datatableRowTemplate).clone();
@@ -58,16 +58,15 @@ $(document).ready(function() {
         userId: userId,
  
 	firstName: firstName,
-
    	lastName: lastName,
- 
-	registartionDate:registartionDate
+ 	registartionDate:registartionDate
+	
       }),
-      success: function(data) {
-        parentEl.attr('data-task-id', data.userId).toggleClass('datatable__row--editing');
+	    complete: function(data) {
+		parentEl.attr('data-task-id', data.userId).toggleClass('datatable__row--editing');
         parentEl.find('[data-task-name-paragraph]').text(taskTitle);
         parentEl.find('[data-task-content-paragraph]').text(taskContent);
-      }
+       }
     });
 	getUsers();
   }
