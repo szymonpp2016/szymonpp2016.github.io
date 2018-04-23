@@ -89,31 +89,36 @@ $(document).ready(function() {
     })
   }
 
-  function handleTaskSubmitRequest(event) {
-    event.preventDefault();
-
-    var firstName = $(this).find('[name="firstName"]').val();
-    var lastName = $(this).find('[name="lastName"]').val();
-    var registartionDate = $(this).find('[name="registartionDate"]').val();
-    var requestUrl = apiRoot + 'createUser';
+  function handleTaskUpdateRequest() {
+    var parentEl = $(this).parent().parent();
+    var userId = parentEl.attr('data-task-id');
+    var firstName = parentEl.find('[data-task-name-input]').val();
+    var lastName = parentEl.find('[data-task-content-input]').val();
+    var registartionDate = parentEl.find('[data-task-registrateDate-input]').val();
+    var requestUrl = apiRoot + 'updateUser';
 
     $.ajax({
       url: requestUrl,
-      method: 'POST',
+      method: "PUT",
       processData: false,
       contentType: "application/json; charset=utf-8",
       dataType: 'json',
       data: JSON.stringify({
-        firstName: firstName,
-        lastName: lastName,
-         registartionDate:registartionDate
+        userId: userId,
+ 
+	firstName: firstName,
+
+   	lastName: lastName,
+ 
+	registartionDate:registartionDate
       }),
-      complete: function(data) {
-        if(data.status === 200) {
-          getUsers();
-        }
-      }
+	    complete: function(data) {
+		parentEl.attr('data-task-id', data.userId).toggleClass('datatable__row--editing');
+        parentEl.find('[data-task-name-paragraph]').text(taskTitle);
+        parentEl.find('[data-task-content-paragraph]').text(taskContent);
+       }
     });
+	getUsers();
   }
 
   function toggleEditingState() {
