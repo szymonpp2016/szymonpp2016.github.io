@@ -17,7 +17,7 @@ $(document).ready(function() {
     element.find('[data-task-content-section] [data-task-content-paragraph]').text(data.lastName);
     element.find('[data-task-content-section] [data-task-content-input]').val(data.lastName);
 
-	element.find('[data-task-registrateDate-section] [data-task-registrateDate-paragraph]').text(data.registartionDate);
+    element.find('[data-task-registrateDate-section] [data-task-registrateDate-paragraph]').text(data.registartionDate);
     element.find('[data-task-registrateDate-section] [data-task-registrateDate-input]').val(data.registartionDate);
 	
     return element;
@@ -90,10 +90,11 @@ $(document).ready(function() {
   function handleTaskSubmitRequest(event) {
     event.preventDefault();
 
-    var taskTitle = $(this).find('[name="firstName"]').val();
-    var taskContent = $(this).find('[name="lastName"]').val();
+    var firstName = $(this).find('[name="firstName"]').val();
+    var lastNamet = $(this).find('[name="lastName"]').val();
+     var lastNamet = $(this).find('[name="registartionDate"]').val();
 
-    var requestUrl = apiRoot + 'createTask';
+    var requestUrl = apiRoot + 'createUser';
 
     $.ajax({
       url: requestUrl,
@@ -102,8 +103,11 @@ $(document).ready(function() {
       contentType: "application/json; charset=utf-8",
       dataType: 'json',
       data: JSON.stringify({
-        firstName: taskTitle,
-        lastName: taskContent
+        firstName: firstName,
+
+   	lastName: lastName,
+ 
+	registartionDate: registartionDate
       }),
       complete: function(data) {
         if(data.status === 200) {
