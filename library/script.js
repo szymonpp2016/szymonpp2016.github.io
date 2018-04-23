@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  var apiRoot = 'http://localhost:8080//v1/library/';
+  var apiRoot = 'https://shrouded-taiga-70668.herokuapp.com/v1/library/';
   var datatableRowTemplate = $('[data-datatable-row-template]').children()[0];
   var tasksContainer = $('[data-tasks-container]');
 
