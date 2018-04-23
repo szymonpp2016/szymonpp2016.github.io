@@ -36,28 +36,25 @@ var elem = document.getElementById("row_2");
 }
 </script>
 
- 
+<button type="submit" data-task-add-button="" class="datatable__button" onclick="changeColor('white');">Change main text color: to white (click)</button>
 
-</script> <button type="submit" data-task-add-button="" class="datatable__button" onclick="changeColor('white');">Change
-main text color: to white (click)</button>
-
-
-<button type="submit" data-task-add-button="" class="datatable__button" onclick="changeColor('black');">Change
-main text color: to black (click)</button>
-
+<button type="submit" data-task-add-button="" class="datatable__button"onclick="changeColor('black');">Change main text color: to black (click)</button>
 
 </center>
+
 <main class="crud container"> <section class="datatable"> </section></main>
+
+
 <h2 id="row_1">Add a new User</h2>
-<form class="datatable__row datatable__row--add" method="post" action="http://localhost:8080/v1/library/createUser" data-task-add-form="">
+<form class="datatable__row datatable__row--add" method="post" action="'https://shrouded-taiga-70668.herokuapp.com/v1/library/createUser" data-task-add-form="">
 <fieldset class="datatable__row-section datatable__row-section--input-section">User
 First Name <input name="firstName" placeholder="Insert User Name" required="" minlength="3">
 </fieldset>
 <fieldset class="datatable__row-section datatable__row-section--input-section">
 User Last Name&nbsp;<br>
-<input name="lastName" placeholder="Insert User Last Name" required="" minlength="3"><br>
-User Registartion Date <br>
-<input name="registartionDate" placeholder="Insert User registartionDate" required="" minlength="3"> </fieldset>
+<input name="lastName" placeholder="Insert User Last Name" required="" minlength="3">
+<br>User Registartion Date (RRRR-MM-DD) <br>
+<input name="registartionDate" placeholder="Insert User registartionDate RRRR-MM-DD" required="" minlength="10" maxlength="10"> </fieldset>
 <fieldset class="datatable__row-section datatable__row-section--button-section">
 <button type="submit" data-task-add-button="" class="datatable__button">Add a User</button> </fieldset>
 </form>
