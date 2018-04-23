@@ -5,7 +5,7 @@ $(document).ready(function() {
   var tasksContainer = $('[data-tasks-container]');
 
    // init
-  getAllTasks();
+  getUsers);
 
   function createElement(data) {
     var element = $(datatableRowTemplate).clone();
@@ -25,12 +25,12 @@ $(document).ready(function() {
 
   function handleDatatableRender(data) {
     tasksContainer.empty();
-    data.forEach(function(task) {
-      createElement(task).appendTo(tasksContainer);
+    data.forEach(function(user) {
+      createElement(user.appendTo(tasksContainer);
     });
   }
 
-  function getAllTasks() {
+  function getUsers() {
     var requestUrl = apiRoot + 'getUsers';
 
     $.ajax({
@@ -109,7 +109,7 @@ $(document).ready(function() {
       }),
       complete: function(data) {
         if(data.status === 200) {
-          getAllTasks();
+          getUsers();
         }
       }
     });
