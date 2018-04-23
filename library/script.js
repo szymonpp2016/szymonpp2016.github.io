@@ -4,7 +4,7 @@ $(document).ready(function() {
   var datatableRowTemplate = $('[data-datatable-row-template]').children()[0];
   var tasksContainer = $('[data-tasks-container]');
 
-  // init
+   // init
   getAllTasks();
 
   function createElement(data) {
@@ -17,7 +17,7 @@ $(document).ready(function() {
     element.find('[data-task-content-section] [data-task-content-paragraph]').text(data.lastName);
     element.find('[data-task-content-section] [data-task-content-input]').val(data.lastName);
 
-    element.find('[data-task-registrateDate-section] [data-task-registrateDate-paragraph]').text(data.registartionDate);
+	element.find('[data-task-registrateDate-section] [data-task-registrateDate-paragraph]').text(data.registartionDate);
     element.find('[data-task-registrateDate-section] [data-task-registrateDate-input]').val(data.registartionDate);
 	
     return element;
@@ -87,8 +87,7 @@ $(document).ready(function() {
     })
   }
 
-
-   function handleTaskSubmitRequest(event) {
+  function handleTaskSubmitRequest(event) {
     event.preventDefault();
 
     var firstName = $(this).find('[name="firstName"]').val();
@@ -115,8 +114,6 @@ $(document).ready(function() {
       }
     });
   }
-
-
 
   function toggleEditingState() {
     var parentEl = $(this).parent().parent();
