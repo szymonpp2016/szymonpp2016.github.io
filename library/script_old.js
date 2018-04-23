@@ -3,9 +3,9 @@ $(document).ready(function() {
   var apiRoot = 'https://shrouded-taiga-70668.herokuapp.com/v1/library/';
   var datatableRowTemplate = $('[data-datatable-row-template]').children()[0];
   var tasksContainer = $('[data-tasks-container]');
-
-   // init
-  getAllTasks();
+   
+	// init 2
+	getUsers();
 
   function createElement(data) {
     var element = $(datatableRowTemplate).clone();
@@ -30,7 +30,7 @@ $(document).ready(function() {
     });
   }
 
-  function getAllTasks() {
+  function getUsers() {
     var requestUrl = apiRoot + 'getUsers';
 
     $.ajax({
@@ -93,7 +93,6 @@ $(document).ready(function() {
     var firstName = $(this).find('[name="firstName"]').val();
     var lastName = $(this).find('[name="lastName"]').val();
     var registartionDate = $(this).find('[name="registartionDate"]').val();
-
     var requestUrl = apiRoot + 'createUser';
 
     $.ajax({
@@ -109,7 +108,7 @@ $(document).ready(function() {
       }),
       complete: function(data) {
         if(data.status === 200) {
-          getAllTasks();
+          getUsers();
         }
       }
     });
