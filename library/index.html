@@ -8,25 +8,51 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i&amp;subset=latin-ext" rel="stylesheet">
 </head>
 <body>
+
+
 <center>
-<h1 class="kodilla-heading kodilla-heading--main" id="main">Library Apalication </h1> <p> <h3>add new user to database (SQL)</h3>
+<h1 class="kodilla-heading kodilla-heading--main" id="main_1">Library Apalication </h1> <p> 
+<h3 id="main_2">add new user to database (SQL)</h3>
+
+
 
 <script>
 function changeColor(newColor)
-{
- var elem = document.getElementById("main");
+
+<!Mo¿na by to zrobiæ przy pomocy tablicy  i petli for albo querySelectorAll() -ale to tylko zabawa > 
+
+  {
+ var elem = document.getElementById("main_1");
+
  elem.style.color = newColor;
+var elem = document.getElementById("main_2");
+
+ elem.style.color = newColor;
+var elem = document.getElementById("row_1");
+
+ elem.style.color = newColor;
+var elem = document.getElementById("row_2");
+
+ elem.style.color = newColor;
+
+
 }
 </script>
 
  
 
+
+
 <button type="submit" data-task-add-button="" class="datatable__button" onclick="changeColor('white');">Change main text color: to white (click)</button>
+
 <button type="submit" data-task-add-button="" class="datatable__button"onclick="changeColor('black');">Change main text color: to black (click)</button>
+
 </center>
 
 <main class="crud container"> <section class="datatable"> </section></main>
-<h2>Add a new User</h2>
+
+
+<h2 id="row_2">Add a new User</h2>
 <form class="datatable__row datatable__row--add" method="post" action="http://localhost:8080/v1/library/createUser" data-task-add-form="">
 <fieldset class="datatable__row-section datatable__row-section--input-section">User
 First Name <input name="firstName" placeholder="Insert User Name" required="" minlength="3">
@@ -40,7 +66,7 @@ User Registartion Date <br>
 <button type="submit" data-task-add-button="" class="datatable__button">Add a User</button> </fieldset>
 </form>
 <section class="datatable"> </section>
-<h2>User from the API</h2>
+<h2 id="row_2">User from the API</h2>
 <div class="datatable__tasks-container" data-tasks-container=""></div>
 <div class="template" data-datatable-row-template="">
 <form class="datatable__row" data-task-id="0">
