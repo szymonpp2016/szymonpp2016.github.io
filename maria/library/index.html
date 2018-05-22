@@ -11,7 +11,7 @@
 <center>
 <h1 class="kodilla-heading kodilla-heading--main" id="main_1">APPLICATION TO SET OPENING HOURS< </h1>
 <p> </p>
-<h3 id="main_2">mozesz dodac nowy plan tygodnia lub inforamcję do bazy danych</h3>
+<h3 id="main_2">możesz dodać nowy plan tygodnia lub inforamcję (urlop/zmiany godz.przyjęć) do bazy danych</h3>
 
 <script>
 function changeColor(newColor)
@@ -35,9 +35,9 @@ var elem = document.getElementById("row_2");
 }
 </script>
 
-<button type="submit" data-task-add-button="" class="datatable__button" onclick="changeColor('white');">Change main text color: to white (click)</button>
+<button type="submit" data-task-add-button="" class="datatable__button" onclick="changeColor('blue');">Zmień kolor tekstu: na BIAŁY (click)</button>
 
-<button type="submit" data-task-add-button="" class="datatable__button"onclick="changeColor('black');">Change main text color: to black (click)</button>
+<button type="submit" data-task-add-button="" class="datatable__button"onclick="changeColor('black');">Zmień kolor tekstu: na CZARNY (click)</button>
 
 </center>
 
@@ -46,7 +46,7 @@ var elem = document.getElementById("row_2");
 
 <h2 id="row_1">Dodaj nowa date</h2>
 <form class="datatable__row datatable__row--add" method="post" action="'https://shrouded-taiga-70668.herokuapp.com/v1/library/createUser" data-task-add-form="">
-<fieldset class="datatable__row-section datatable__row-section--input-section">Dzien tygodnia <input name="firstName" placeholder="Wpisz dzień tygodnia" required="" minlength="3">
+<fieldset class="datatable__row-section datatable__row-section--input-section">Dzien tygodnia <input name="firstName" placeholder="Wpisz dzień (lub dni) tygodnia" required="" minlength="3">
 </fieldset>
 <fieldset class="datatable__row-section datatable__row-section--input-section">Godziny i uwagi &nbsp;<br>
 <input name="lastName" placeholder="Wpisz np. od 10-14 lub informację 'WYJEZDZAM NA URLOP W DNIACH'" required="" minlength="3">
