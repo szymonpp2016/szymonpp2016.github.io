@@ -1,4 +1,151 @@
 @charset "UTF-8";
+html {
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-weight: normal;
+  margin: 0;
+  padding: 0; }
+
+input,
+textarea {
+  width: 100%;
+  padding: 5px;
+  margin: 0;
+  border-radius: 2px;
+  border: 1px solid #ccc; }
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #fff  }
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit; }
+
+.crud {
+  margin-bottom: 20px; }
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto; }
+
+@media (min-width: 768px) {
+  .container {
+    width: 750px; } }
+@media (min-width: 992px) {
+  .container {
+    width: 970px; } }
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px; } }
+.kodilla-heading--main {
+  margin: 20px auto;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 400; }
+
+.datatable__row {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  border: 1px solid #ccc;
+  border-bottom: none;
+  margin: 0; }
+
+.datatable__row:first-of-type {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px; }
+
+.datatable__row:last-of-type {
+  border-bottom: 1px solid #ccc;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px; }
+
+.datatable__row input,
+.datatable__row textarea {
+  display: none; }
+
+.datatable__row .datatable__button--editing {
+  display: none; }
+
+.datatable__row--editing input,
+.datatable__row--editing textarea {
+  display: block; }
+
+.datatable__row--editing .datatable__field-value {
+  display: none; }
+
+.datatable__row--editing .datatable__button {
+  display: none; }
+
+.datatable__row--editing .datatable__button--editing {
+  display: block; }
+
+.datatable__row--add input,
+.datatable__row--add textarea {
+  display: block; }
+
+.datatable__field-value {
+  margin-bottom: 0;
+  font-size: 14px; }
+
+.datatable__row-section {
+  border: none;
+  margin: 0;
+  padding: 10px;
+  flex-grow: 1; }
+
+.datatable__row-section--button-section {
+  margin-left: auto;
+  align-self: center;
+  flex-shrink: 1;
+  flex-grow: 0;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  align-items: center; }
+
+.datatable__input-label {
+  display: block;
+  text-align: left;
+  font-size: 14px;
+  margin: 5px auto;
+  font-weight: 500;
+  letter-spacing: 0.6px; }
+
+.datatable__button {
+  color: #fff;
+  background-color: #28a745;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 8px 12px;
+  font-size: 12px;
+  min-width: 120px;
+  line-height: 1.25;
+  border-radius: 4px; }
+
+.datatable__tasks-container:empty {
+  position: relative; }
+
+.datatable__tasks-container:empty::after {
+  content: 'Obecnie brak wolnych terminów lub poczekaj na za³adowanie bazy danych.'; }
+
+.template {
+  display: none;
+}
+
 /*----------------------------------------------------------------------
 
 	MASTER STYLESHEET
@@ -41,7 +188,7 @@ p {
   font-weight: 400;
    font-family: 'Roboto', sans-serif;
   
-  color: #a6a7aa;
+  color: black;
   line-height: 1.4;
   margin-bottom: 15px;
 }
@@ -224,7 +371,7 @@ fieldset[disabled] .btn-theme {
 }
 
 .btn-white-bg {
-  color: #515769;
+  color: black;
   background: #fff;
   border-color: transparent;
   border-width: 0;
@@ -244,13 +391,13 @@ fieldset[disabled] .btn-theme {
 }
 
 .btn-white-brd:hover, .btn-white-brd:focus, .btn-white-brd.focus {
-  color: #515769;
+  color: black;
   background: #fff;
   border-color: #fff;
 }
 
 .btn-default-bg {
-  color: #515769;
+  color: black;
   background: #f3f4f5;
   border-color: transparent;
   border-width: 0;
@@ -296,7 +443,7 @@ fieldset[disabled] .btn-theme {
   width: 40px;
   height: 40px;
   font-size: 16px;
-  color: #515769;
+  color: black;
   background: #fff;
   text-align: center;
   border-radius: 50%;
@@ -309,7 +456,7 @@ fieldset[disabled] .btn-theme {
 
 .social-icons:hover {
   color: #fff;
-  background: #515769;
+  background: black;
   transition-duration: 300ms;
   transition-property: all;
   transition-timing-function: cubic-bezier(0.7, 1, 0.7, 1);
@@ -473,7 +620,7 @@ fieldset[disabled] .btn-theme {
   width: 21px;
   height: 1px;
   display: inline-block;
-  background: #515769;
+  background: black;
   transition-duration: 300ms;
   transition-property: all;
   transition-timing-function: cubic-bezier(0.7, 1, 0.7, 1);
@@ -482,7 +629,7 @@ fieldset[disabled] .btn-theme {
 .header .navbar-toggle .toggle-icon:before, .header .navbar-toggle .toggle-icon:after {
   position: absolute;
   left: 0;
-  background: #515769;
+  background: black;
   content: " ";
 }
 
@@ -662,7 +809,7 @@ fieldset[disabled] .btn-theme {
   }
   /* Navbar Nav */
   .header .nav-item-child {
-    color: #515769;
+    color: black;
     line-height: 1.4;
     padding: 12px 12px 12px 15px;
   }
@@ -714,7 +861,7 @@ fieldset[disabled] .btn-theme {
     transition-timing-function: cubic-bezier(0.7, 1, 0.7, 1);
   }
   .page-on-scroll .header .nav-item-child {
-    color: #515769;
+    color: black;
     transition-duration: 300ms;
     transition-property: all;
     transition-timing-function: cubic-bezier(0.7, 1, 0.7, 1);
@@ -739,7 +886,7 @@ fieldset[disabled] .btn-theme {
   line-height: 3;
   letter-spacing: 1px;
   text-transform: uppercase;
-  background: #515769;
+  background: black;
   border-radius: 3px;
   visibility: hidden;
   opacity: 0;
@@ -839,15 +986,15 @@ fieldset[disabled] .btn-theme {
 }
 
 .color-subtitle {
-  color: #a6a7aa !important;
+  color: black !important;
 }
 
 .color-link {
-  color: #81848f !important;
+  color: black !important;
 }
 
 .color-link-hover {
-  color: #999caa !important;
+  color: black!important;
 }
 
 .color-sky-light {
@@ -866,11 +1013,11 @@ fieldset[disabled] .btn-theme {
 }
 
 .bg-color-heading {
-  background: #515769 !important;
+  background: black !important;
 }
 
 .bg-color-subtitle {
-  background: #a6a7aa !important;
+  background: black !important;
 }
 
 .bg-color-link {
@@ -1333,149 +1480,3 @@ fieldset[disabled] .btn-theme {
   }
 }
 
-html {
-  font-family: 'Roboto', sans-serif;
-  box-sizing: border-box;
-  font-size: 16px;
-  font-weight: normal;
-  margin: 0;
-  padding: 0; }
-
-input,
-textarea {
-  width: 100%;
-  padding: 5px;
-  margin: 0;
-  border-radius: 2px;
-  border: 1px solid #ccc; }
-
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #fff  }
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit; }
-
-.crud {
-  margin-bottom: 20px; }
-
-.container {
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto; }
-
-@media (min-width: 768px) {
-  .container {
-    width: 750px; } }
-@media (min-width: 992px) {
-  .container {
-    width: 970px; } }
-@media (min-width: 1200px) {
-  .container {
-    width: 1170px; } }
-.kodilla-heading--main {
-  margin: 20px auto;
-  text-align: center;
-  font-size: 30px;
-  font-weight: 400; }
-
-.datatable__row {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: flex-start;
-  align-items: stretch;
-  border: 1px solid #ccc;
-  border-bottom: none;
-  margin: 0; }
-
-.datatable__row:first-of-type {
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px; }
-
-.datatable__row:last-of-type {
-  border-bottom: 1px solid #ccc;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px; }
-
-.datatable__row input,
-.datatable__row textarea {
-  display: none; }
-
-.datatable__row .datatable__button--editing {
-  display: none; }
-
-.datatable__row--editing input,
-.datatable__row--editing textarea {
-  display: block; }
-
-.datatable__row--editing .datatable__field-value {
-  display: none; }
-
-.datatable__row--editing .datatable__button {
-  display: none; }
-
-.datatable__row--editing .datatable__button--editing {
-  display: block; }
-
-.datatable__row--add input,
-.datatable__row--add textarea {
-  display: block; }
-
-.datatable__field-value {
-  margin-bottom: 0;
-  font-size: 14px; }
-
-.datatable__row-section {
-  border: none;
-  margin: 0;
-  padding: 10px;
-  flex-grow: 1; }
-
-.datatable__row-section--button-section {
-  margin-left: auto;
-  align-self: center;
-  flex-shrink: 1;
-  flex-grow: 0;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: space-around;
-  align-items: center; }
-
-.datatable__input-label {
-  display: block;
-  text-align: left;
-  font-size: 14px;
-  margin: 5px auto;
-  font-weight: 500;
-  letter-spacing: 0.6px; }
-
-.datatable__button {
-  color: #fff;
-  background-color: #28a745;
-  display: block;
-  margin-bottom: 5px;
-  font-weight: 400;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  user-select: none;
-  border: 1px solid transparent;
-  padding: 8px 12px;
-  font-size: 12px;
-  min-width: 120px;
-  line-height: 1.25;
-  border-radius: 4px; }
-
-.datatable__tasks-container:empty {
-  position: relative; }
-
-.datatable__tasks-container:empty::after {
-  content: 'Obecnie brak wolnych terminów lub poczekaj na za³adowanie bazy danych.'; }
-
-.template {
-  display: none;
-}
