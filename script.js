@@ -1,7 +1,9 @@
 $(document).ready(function() {
-  const apiRoot = 'http://localhost:8080/v1/';
-  const trelloApiRoot = 'http://localhost:8080/v1/trello/';
-  const datatableRowTemplate = $('[data-datatable-row-template]').children()[0];
+  const apiRoot = 'https://guarded-dusk-74142.herokuapp.com/v1/task/';
+  const trelloApiRoot = 'https://guarded-dusk-74142.herokuapp.com/v1/trello/';
+  const apiRootNew = 'https://guarded-dusk-74142.herokuapp.com/v1/';
+  
+   const datatableRowTemplate = $('[data-datatable-row-template]').children()[0];
   const $tasksContainer = $('[data-tasks-container]');
 
   var availableBoards = {};
@@ -63,7 +65,7 @@ $(document).ready(function() {
   }
 
   function getAllTasks() {
-    const requestUrl = apiRoot + 'tasks';
+    const requestUrl = apiRootNew + 'tasks';
 
     $.ajax({
       url: requestUrl,
@@ -84,7 +86,7 @@ $(document).ready(function() {
     var taskId = parentEl.attr('data-task-id');
     var taskTitle = parentEl.find('[data-task-name-input]').val();
     var taskContent = parentEl.find('[data-task-content-input]').val();
-    var requestUrl = apiRoot + 'tasks';
+    var requestUrl = apiRootNew + 'tasks';
 
     $.ajax({
       url: requestUrl,
@@ -108,12 +110,10 @@ $(document).ready(function() {
   function handleTaskDeleteRequest() {
     var parentEl = $(this).parents('[data-task-id]');
     var taskId = parentEl.attr('data-task-id');
-    var requestUrl = apiRoot + 'tasks';
+    var requestUrl = apiRootNew + 'tasks';
 
     $.ajax({
-      url: requestUrl + '/' + $.param({
-        taskId: taskId
-      }),
+      url: requestUrl + '/' + taskId,
       method: 'DELETE',
       success: function() {
         parentEl.slideUp(400, function() { parentEl.remove(); });
@@ -127,7 +127,7 @@ $(document).ready(function() {
     var taskTitle = $(this).find('[name="title"]').val();
     var taskContent = $(this).find('[name="content"]').val();
 
-    var requestUrl = apiRoot + 'tasks';
+    var requestUrl = apiRootNew + 'tasks';
 
     $.ajax({
       url: requestUrl,
