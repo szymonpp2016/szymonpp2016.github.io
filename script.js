@@ -1,3 +1,4 @@
+/* encoding="UTF-8" */
 $(document).ready(function() {
   const apiRoot = 'https://guarded-dusk-74142.herokuapp.com/v1/task/';
   const trelloApiRoot = 'https://guarded-dusk-74142.herokuapp.com/v1/trello/';
