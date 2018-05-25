@@ -140,7 +140,7 @@ body {
   position: relative; }
 
 .datatable__tasks-container:empty::after {
-  content: 'Obecnie brak wolnych terminów lub poczekaj na załadowanie bazy danych (może to potrwać 5-10s).'; }
+  content: 'poczekaj na załadowanie się bazy danych (może to potrwać 3-30s). Sprawdź czy nie masz włączonej opcji blokowania skryptów'; }
 
 .template {
   display: none;
