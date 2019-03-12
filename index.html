@@ -1,386 +1,92 @@
-﻿<!DOCTYPE html>
-<!-- ==============================
-    Project:        Metronic "Acecv" Frontend Freebie - Responsive HTML Template Based On Twitter Bootstrap 3.3.4
-    Version:        1.0
-    Author:         KeenThemes
-    Primary use:    Corporate, Business Themes.
-    Email:          support@keenthemes.com
-    Follow:         http://www.twitter.com/keenthemes
-    Like:           http://www.facebook.com/keenthemes
-    Website:        http://www.keenthemes.com
-    Premium:        Premium Metronic Admin Theme: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
-================================== -->
-<html lang="en" class="no-js">
-    <!-- BEGIN HEAD -->
-    <head>
-	<meta name="google-site-verification" content="Z192TY94XdgDeY0a9sPEJziQilYHxHjKtiF-wk_DpEc" />
-        <meta charset="utf-8"/>
-        <title>Maria Wyczałek-Piątkowska - Dyplomowany terapeuta</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta content="width=device-width, initial-scale=1" name="viewport"/>
-        <meta name=”description” content=”Dyplomowany terapeuta w zakresie Terapii Systemowej Rodzin oraz Terapii Systemowej Organizacji wg Berta Hellingera. Trener rozwoju osobistego.” />
-        <meta name=”keywords” content=”Terapeuta, NLP, Terapii Systemowej Organizacji, Terapii Systemowej Rodzin , kursy z obszaru rozwoju osobistego np.SE, SBA, praca oddechem, NLP” />
-		<meta content="" name="author"/>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>CRUD</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i&subset=latin-ext" rel="stylesheet">
+</head>
+<body>
+<h1 class="kodilla-heading kodilla-heading--main">REST / CRUD App conected with Trello App</h1>
 
-        <!-- GLOBAL MANDATORY STYLES -->
-        <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
-        <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css"/>
-        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<main class="crud container">
+  <section class="datatable">
+    <h2>Add a new task</h2>
+    <form
+        class="datatable__row datatable__row--add"
+        method="POST"
+        action="http://localhost:8080/v1/task/createTask"
+        data-task-add-form
+    >
+      <fieldset class="datatable__row-section datatable__row-section--input-section">
+        <label class="datatable__input-label">
+          Task name
+        </label>
+        <input type="text" name="title" placeholder="Insert a task name" required minlength="3">
+      </fieldset>
 
-        <!-- PAGE LEVEL PLUGIN STYLES -->
-        <link href="css/animate.css" rel="stylesheet">
-        <link href="vendor/swiper/css/swiper.min.css" rel="stylesheet" type="text/css"/>
+      <fieldset class="datatable__row-section datatable__row-section--input-section">
+        <label class="datatable__input-label">
+          Task content
+        </label>
+        <textarea name="content" placeholder="Insert task content" required minlength="3"></textarea>
+      </fieldset>
 
-        <!-- THEME STYLES -->
-        <link href="css/layout.min.css" rel="stylesheet" type="text/css"/>
+      <fieldset class="datatable__row-section datatable__row-section--button-section">
+        <button type="submit" data-task-add-button class="datatable__button">Add a task</button>
+      </fieldset>
+    </form>
+  </section>
+  <section class="datatable">
+    <h2>Tasks from the API</h2>
+    <div class="datatable__tasks-container" data-tasks-container></div>
+  </section>
+</main>
 
-        <!-- Favicon -->
-        <link rel="shortcut icon" href="favicon.ico"/>
-    </head>
-    <!-- END HEAD -->
+<div class="template" data-datatable-row-template>
+  <form class="datatable__row" data-task-id="0">
+    <fieldset class="datatable__row-section datatable__row-section--input-section" data-task-name-section>
+      <label class="datatable__input-label">
+        Task name
+      </label>
+      <input type="text" name="title" placeholder="Insert a new task name" data-task-name-input required minlength="3">
+      <p class="datatable__field-value" data-task-name-paragraph></p>
+    </fieldset>
 
-    <!-- BODY -->
-    <body id="body" data-spy="scroll" data-target=".header">
+    <fieldset class="datatable__row-section datatable__row-section--input-section" data-task-content-section>
+      <label class="datatable__input-label">
+        Task content
+      </label>
+      <textarea name="title" placeholder="Insert new task content" data-task-content-input required minlength="3"></textarea>
+      <p class="datatable__field-value" data-task-content-paragraph></p>
+    </fieldset>
 
-        <!--========== HEADER ==========-->
-        <header class="header navbar-fixed-top">
-            <!-- Navbar -->
-            <nav class="navbar" role="navigation">
-                <div class="container">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="menu-container js_nav-item">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="toggle-icon"></span>
-                        </button>
+    <div class="datatable__row-section-wrapper">
+      <fieldset class="datatable__row-section datatable__row-section--button-section">
+        <button type="button" data-task-submit-update-button class="datatable__button datatable__button--editing ">Submit update</button>
+        <button type="button" data-task-edit-abort-button class="datatable__button datatable__button--editing">Abort update</button>
+        <button type="button" data-task-edit-button class="datatable__button">Edit</button>
+        <button type="button" data-task-delete-button class="datatable__button">Delete</button>
+      </fieldset>
 
-                        <!-- Logo -->
-                        <div class="logo">
-                            <a class="logo-wrap" href="#body">PRZEJDŹ DO:
-                            </a>
-                        </div>
-                        <!-- End Logo -->
-                    </div>
-
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse nav-collapse">
-                        <div class="menu-container">
-                            <ul class="nav navbar-nav navbar-nav-right">
-
-<li class="js_nav-item nav-item"><font color="black"><a class="nav-item-child nav-item-hover" href="#about">&nbsp; &nbsp; Doświadczenie &nbsp; &nbsp; </a></font></li>
-<li class="js_nav-item nav-item"><font color="black"><a class="nav-item-child nav-item-hover" href="#work">&nbsp; &nbsp; Praca i Wydarzenia &nbsp; &nbsp;</a></font></li>
-<li class="js_nav-item nav-item"><font color="black"><a class="nav-item-child nav-item-hover" href="#contact"> &nbsp; &nbsp; Kontakt &nbsp; &nbsp; </a></font></li>
- </ul>
-                        </div>
-                    </div>
-                    <!-- End Navbar Collapse -->
-                </div>
-            </nav>
-            <!-- Navbar -->
-        </header>
- <!--========== END HEADER ==========--><!--========== SLIDER ==========-->
-
-<div class="promo-block">
-<div class="container">
-<div class="row">
-<div class="col-sm-6 sm-margin-b-60">
-<div class="margin-b-30">
-<h1 class="promo-block-title">Maria <br>
-Wyczałek - Piątkowska</h1>
-<p class="promo-block-text"><span style="color: rgb(0, 0, 0); font-family: verdana,arial; font-size: 14px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;  display: inline ! important; float: none;">Trener
-rozwoju osobistego, dyplomowany terapeuta w zakresie Terapii Systemowej
-Rodzin oraz Terapii Systemowej Organizacji wg Berta
-Hellingera.&nbsp;<span></span></span></p>
-</div>
-<ul class="list-inline">
-
-</ul>
-</div>
-<div class="col-sm-6">
-                        <div class="promo-block-img-wrap">
-                            <img class="promo-block-img img-responsive" src="img/mockup/avatar-02.png" align="Avatar">
-                        </div>
-                    </div>
-</div>
-<!--// end row --> </div>
-</div>
-<!--========== SLIDER ==========--><!--========== PAGE LAYOUT ==========--><!-- About -->
-<div id="about">
-<div class="container content-lg">
-<div class="row">
-<div class="col-sm-5 sm-margin-b-60">
-                        <img class="full-width img-responsive" src="img/500x700/01a.jpg" alt="Image">
-                    </div>
-<div class="col-sm-7">
-<div class="section-seperator margin-b-50">
-<div class="margin-b-50">
-<div class="margin-b-30">
-<h2>O mnie</h2>
-<span style="color: rgb(0, 0, 0); font-size: 15px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255); display: inline ! important; float: none;">Dysponuję
-tytułami: Praktyk i Master NLP, praktyk Transformacyjnej Pracy z
-Oddechem,<br>
-ukończyłam także kurs Totalnej Biologii.
-Posiadam wieloletnie doświadczenie w pracy pedagogiczno-edukacyjnej z
-dziećmi, młodzieżą i dorosłymi. <br>
-Moja kariera rozwoju jako trener i terapueta: 
-
-<li style="color: rgb(0, 0, 0); font-size: 15px; font-style: normal; font-weight: 400; ">
-Dwustopniowe
-szkolenie z ustawień systemowych: <br>  rodzinnych i organizacyjnych - M.Senftleben-Gudrich.<br>
-</li>
-<li style="color: rgb(0, 0, 0); font-size: 15px; font-style: normal; font-weight: 400; "> Kurs mistrzowski prowadzony przez B. Helligera.<br>
-</li>
-<li style="color: rgb(0, 0, 0); font-size: 15px; font-style: normal; font-weight: 400; "> Dwuletnie szkolenie z ustawień: G. Walpera.<br>
-</li>
-<li style="color: rgb(0, 0, 0); font-size: 15px; font-style: normal; font-weight: 400; "> 3-stopniowy kurs Totalnej Biologii.<br>
-</li>
-<li style="color: rgb(0, 0, 0); font-size: 15px; font-style: normal; font-weight: 400; "> Liczne warsztaty i kursy z obszaru rozwoju osobistego np.SE,
-SBA, praca oddechem, NLP.</li>
-</span><span style="color: rgb(0, 0, 0); font-family: verdana,arial; font-size: 14px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255); display: inline ! important; float: none;"></span><span style="color: rgb(0, 0, 0); font-family: verdana,arial; font-size: 14px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255); display: inline ! important; float: none;"></span></div>
-<a href="moja_praca.html" class="btn-theme btn-theme-md btn-default-bg text-uppercase">Przeczytaj
-więcej o mojej pracy</a> </div>
-
- <a href="working_hours/index.html" class="btn-theme btn-theme-md btn-default-bg text-uppercase" id="dostepne" type="button"> Sprawdź dostępne terminy </a> 
-
-</div>
-<h2>Umiejętności</h2>
-<!-- Progress Box C-->
-<div class="progress-box">
-<h5><span style="color: rgb(0, 0, 0); font-family: verdana,arial; font-size: 14px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255); display: inline ! important; float: none;">
-praca pedagogiczno-edukacyjna z dziećmi</span>&nbsp;<span class="color-heading pull-right">&nbsp;</span></h5>
-<div class="progress">
-<div class="progress-bar bg-color-base" role="progressbar" data-width="87"></div>
-</div>
-</div>
-<div class="progress-box">
-<h5><span style="color: rgb(0, 0, 0); font-family: verdana,arial; font-size: 14px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255); display: inline ! important; float: none;">
-terapia i praca pedagogiczno-edukacyjna z&nbsp;</span><span style="color: rgb(0, 0, 0); font-family: verdana,arial; font-size: 14px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255); display: inline ! important; float: none;">młodzieżą i dorosłymi</span><span class="color-heading pull-right">&nbsp;</span></h5>
-<div class="progress">
-<div class="progress-bar bg-color-base" role="progressbar" data-width="78"></div>
-</div>
-</div>
-<div class="progress-box">
-<h5><span style="color: rgb(0, 0, 0); font-family: verdana,arial; font-size: 14px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255); display: inline ! important; float: none;">
-rozwiązywanie problemów firm i organizacji z użyciem metody  &nbsp;</span><span style="color: rgb(0, 0, 0); font-family: verdana,arial; font-size: 14px; font-style: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255); display: inline ! important; float: none;">Ustawień Organizacji</span><br>
-</h5>
-<div class="progress">
-<div class="progress-bar bg-color-base" role="progressbar" data-width="90"></div>
-</div>
-</div>
-<!-- End Progress Box --> </div>
-</div>
-<!--// end row --> </div>
-</div>
-<!-- End About --><!-- Experience -->
-<div id="experience">
-<div class="bg-color-sky-light" data-auto-height="true"><br>
-</div>
-</div>
-<!-- Work -->
-<div id="work">
-<div class="bg-color-sky-light">
-<div class="container content-lg">
-<div class="row margin-b-40">
-
-<div class="col-sm-6">
-
-<h2>Wydarzenia </h2>
-</div>
-<p > <br><br> </p> <p> Chętnie nawiążę współpracę z lokalnymi organizatorami warsztatów (grupa min. 12 os). </p>
-<p >W sprawie informacji o możliwych terminach spotkań i innych wydarzeniach związanych z terapią
-proszę o kontakt telefoniczny. </p> <br>
-<div class="col-sm-6">
-<li class="js_nav-item nav-item"> <font color="black"> <a class="btn-theme btn-theme-md btn-default-bg text-uppercase" href="#contact"> &nbsp; &nbsp; Dane kontaktowe
-&nbsp; &nbsp; </a></font></li>
-</div>
+      <fieldset class="datatable__row-section datatable__row-section--trello-section">
+        <select class="datatable__select" name="board-name" data-board-name-select>
+          <option disabled selected>--- select an board ---</option>
+        </select>
+        <select class="datatable__select" name="list-name" data-list-name-select>
+          <option disabled selected>--- select a list ---</option>
+        </select>
+        <button type="button" data-trello-card-creation-trigger class="datatable__button datatable__button--card-creation">
+          Create a card
+        </button>
+      </fieldset>
+    </div>
+  </form>
 </div>
 
+<script src="jquery-3.3.1.min.js"></script>
+<script src="script.js"></script>
 
-
-<!--// end row -->
-<div class="row">
-
-<!-- Latest Products -->
-<div class="col-sm-4 sm-margin-b-50">
-<div class="margin-b-20">
-<div class="wow zoomIn" data-wow-duration=".3" data-wow-delay=".1s"> <img src="img/970x647/01.jpg" class="img-responsive"> </div>
-</div>
-<h4><a href="https://www.rozwijalnia.pl/kiedy_milosc_moze_sie_udac">KIEDY MIŁOŚĆ MOŻE SIĘ UDAĆ?</a>&nbsp;<span class="text-uppercase margin-l-20">WYKŁAD</span></h4>
-<p>20 maja miałyśmy okazję uczestniczyć w drugim już wykładzie z
-cyklu ,,Cóż wiemy o miłości? (fot. www.rozwijalnia.pl)</p>
-<a class="link" href="https://www.rozwijalnia.pl/kiedy_milosc_moze_sie_udac">Read
-More</a> </div>
-<!-- End Latest Products --><!-- Latest Products -->
-<div class="col-sm-4 sm-margin-b-50">
-<div class="margin-b-20">
-<div class="wow zoomIn" data-wow-duration=".3" data-wow-delay=".1s"> <img class="img-responsive" src="img/970x647/02.jpg" alt="Latest Products Image"></div>
-</div>
-
-<h4><a href="http://www.miastokobiet.pl/warsztat-medialnych-ustawien-rodzin-wg-metody-hellingera">USTAWIENIA
-HELLINGERA – WARSZTAT</a>
-&nbsp;<span class="text-uppercase margin-l-20">Warsztaty</span></h4>
-<p>Warsztat poprowadzi Maria Wyczałek-Piątkowska – trener rozwoju
-osobistego, dyplomowany terapeuta w zakresie Terapii Systemowej Rodzin
-wg Berta Hellingera Ustawienia hellingerowskie umożliwiają rozpoznania
-głębokich, systemowych przyczyn własnych problemów (fot. Fotolia)</p>
-<a class="link" href="http://www.miastokobiet.pl/warsztat-medialnych-ustawien-rodzin-wg-metody-hellingera">Read
-More</a> </div>
-<!-- End Latest Products --><!-- Latest Products -->
-<div class="col-sm-4 sm-margin-b-50">
-<div class="margin-b-20">
-<div class="wow zoomIn" data-wow-duration=".3" data-wow-delay=".1s"> <img class="img-responsive" src="img/970x647/03.jpg" alt="Latest Products Image"></div>
-</div>
-<h4><a href="https://www.rozwijalnia.pl/konflikt_psychologiczny_jako_przyczyna_choroby2">KONFLIKT
-PSYCHOLOGICZNY JAKO PRZYCZYNA CHOROBY</a>
-<span class="text-uppercase margin-l-20">Wykład</span></h4>
-<p>Autorka – Maria Wyczałek-Piątkowska wprowadziła słuchaczy w
-ten rozległy temat, prezentując nowe spojrzenie na chorobę i
-dolegliwości (symptomy) fizyczne.
-Wykład powstał w oparciu o Totalną Biologię Żywych Organizmów, która
-stanowi syntezę, stworzoną przez dr. Claude’a Sabbah...</p>
-<a class="link" href="https://www.rozwijalnia.pl/konflikt_psychologiczny_jako_przyczyna_choroby2">Read
-More</a> </div>
-<!-- End Latest Products --> </div>
-<!--// end row --> </div>
-</div>
-<!-- End Work --><!-- Clients -->
-
-<!-- End Clients --><!-- Promo Banner -->
-<div class="promo-banner parallax-window" data-parallax="scroll" data-image-src="img/1920x1080/012.jpg">
-<div class="container-sm content-lg">
-<h2 class="promo-banner-title">"Od­na­leźć siebie,
-umiłować to, co trwa i poczuć, jak piękne jest życie..."</h2>
-<br>
-</div>
-</div>
-<!-- End Promo Banner --><!-- Contact -->
-<div id="contact">
-<div class="bg-color-sky-light">
-<div class="container content-lg">
-<div class="row margin-b-40">
-<div class="col-sm-6">
-<h2>Kontakt</h2>
-</div>
-</div>
-<!--// end row -->
-
-
-<div class="row">
-<div class="col-md-3 col-xs-6 md-margin-b-30">
-<h4>Adres</h4>
-<a href="#mapa">ul. 1 Maja 6/3 <br> 55-011 Siechnice</a> 
-</div>
-<div class="col-md-3 col-xs-6 md-margin-b-30">
-<h4>Telefon</h4>
-<a  >517-654-833 <br>  71 311-56-56</a> </div>
-<div class="col-md-3 col-xs-6">
-<h4>E-mail</h4>
-<a href="mailto:#">mariawyczalek@o2.pl</a> </div>
-<div class="col-md-3 col-xs-6">
-<h4>Referencje</h4>
-<a href="http://hellingerpolska.pl/lista_wyczalek_maria.php">hellingerpolska.pl</a>
-</div>
-</div>
-<!--// end row --> </div>
- 
-</div>
-
-</div>
-
-<div id="mapa"></div>
- 
- 
-
- <!-- Latest Products -->
-  
-<div class="container content-lg">
-<div class="col-sm-4 sm-margin-b-50">
-<div class="margin-b-20">
- 
- 
-<br>
-<div class="google-maps">
-<iframe  src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d2509.0012657016437!2d17.143528315896543!3d51.034597352982324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x470fdc5ea06972c3%3A0xb0c2b6936d4dc4fc!2s1+Maja+6%2C+55-011+Siechnice!3m2!1d51.034594!2d17.145716999999998!5e0!3m2!1spl!2spl!4v1527075747314"   frameborder="0" style="border:1" align="left" allowfullscreen></iframe> </div>
- </div> <br> </div> 
-<!-- End Latest Products --><!-- Latest Products -->
-<div class="col-sm-4 sm-margin-b-50">
-<div class="margin-b-20">
- 
- 
-
-<h4><a>Dojazd komunikacją zbiorową:</a>
-</h4>
-<p>Pociągiem: <br>
-- z Wrocławia Głównego w kierunku Jelcza-Laskowic (stacja Siechnice). Czas jazdy: 10-15 minut. <br><br>
-Autobusem: <br>
-- z Wrocławia: linia 800/810/820 w kierunku Siechnice Osiedle odjeżdżajaca z przystanku "Galeria Dominikańska obok dawnego PZU".
-Czas jazdy: około 25minut. Przystanek docelowy: "Siechnice ul.Szkolna". 
-<br>
-- z Oławy: autobus PKS Oława w kierunku Wrocławia. Przystanek docelowy: "Siechnice Centrum".
- </p>
-   </div></div>
-<!-- End Latest Products --><!-- Latest Products -->
-<div class="col-sm-4 sm-margin-b-50">
-<div class="margin-b-20">
- 
-  
- 
- 
-<h4><a>Dojazd samochodem:</a>
-</h4>
-<p>Z Wrocławia drogą nr 94 w kierunku Oławy. Siechnice to druga miejscowość od Wrocławia (za Radwanicami).
-Można również dojechać Wschodnią Obwodnicą Wrocławia, korzystając ze zjazdu 
-"Siechnice ul. Stawowa". </p>
-<h4><a>Wyszukaj połączenie:</a> 
-<p> <br> <a target="_blank" href="http://rozklad-pkp.pl/pl/tp?queryPageDisplayed=yes&REQ0JourneyStopsS0A=1&REQ0JourneyStopsS0G=Wrocław%20Główny&REQ0JourneyStopsS0ID=&REQ0JourneyStops1.0G=&REQ0JourneyStopover1=&REQ0JourneyStops2.0G=&REQ0JourneyStopover2=&REQ0JourneyStopsZ0A=1&REQ0JourneyStopsZ0G=Siechnice&REQ0JourneyStopsZ0ID=">Rozkład jazdy pociągów</a> <br>
-  <a target="_blank" href="https://siechnice.com.pl/news/nowe-linie-autobusowe-od-1-marca-rozklady-jazdy">Rozkład jazdy linii 800 </a>  <br>
- <a target="_blank" href="http://pks.olawa.pl/przewozy-osobowe/rozklad-jazdy/wyniki-wyszukiwania/">Rozkład jazdy PKS Oława</a> </p>
- </div></div>
- 
-<!-- Swiper Clients -->
- <!-- Swiper Wrapper -->
- 
-
- 
-<!-- End Swiper Wrapper -->  
-<!-- End Swiper Clients -->  
- 
-
-<!-- End Contact --><!--========== END PAGE LAYOUT ==========--><!--========== FOOTER ==========-->
-<footer class="footer"> </footer>
-<div class="content container">
-<div class="row">
-<div class="col-xs-6"> <img class="footer-logo" src="img/logo.png" alt="Acecv Logo"> 
-</div>
-<div class="col-xs-6 text-right sm-text-left">
-
-<p class="margin-b-0"><a class="fweight-700" href="http://keenthemes.com/preview/acecv/">Acecv</a>
-Theme Powered by: <a class="fweight-700" href="http://www.keenthemes.com/">KeenThemes.com</a></p>
-
-</div>
-</div>
-<center> <br>
-<p><small><small>Właściciel strony nie gromadzi ani nie przetwarza plików cookies. Pliki cookies mogą być wykorzystywane przez portal do dostosowania zawartości stron www do preferencji użytkownika oraz optymalizacji procesu korzystania ze stron internetowych.
-Użytkownik w każdej chwili ma możliwość wyłączenia lub przywrócenia opcji gromadzenia cookies poprzez zmianę ustawień w przeglądarce internetowej.
-  </p> 
-<p><small><small>Właściciel strony nie przekazuje Twoich danych podmiotom trzecim. Wysyłając wiadomość e-mail, wyrażasz zgodę na zapisanie Twojego adresu e-mailowego (oraz informacji zawrtej w e-mailu)) w celu prowadzenia korespondencji.
-  </p></center>
-<!--// end row --> </div>
-<!--========== END FOOTER ==========--><!-- Back To Top -->
-<a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
-<!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) --><!-- CORE PLUGINS -->
-<script src="vendor/jquery.min.js" type="text/javascript"></script>
-<script src="vendor/jquery-migrate.min.js" type="text/javascript"></script>
-<script src="vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script><!-- PAGE LEVEL PLUGINS -->
-<script src="vendor/jquery.easing.js" type="text/javascript"></script>
-<script src="vendor/jquery.back-to-top.js" type="text/javascript"></script>
-<script src="vendor/jquery.smooth-scroll.js" type="text/javascript"></script>
-<script src="vendor/jquery.wow.min.js" type="text/javascript"></script>
-<script src="vendor/jquery.parallax.min.js" type="text/javascript"></script>
-<script src="vendor/jquery.appear.js" type="text/javascript"></script>
-<script src="vendor/swiper/js/swiper.jquery.min.js" type="text/javascript"></script><!-- PAGE LEVEL SCRIPTS -->
-<script src="js/layout.min.js" type="text/javascript"></script>
-<script src="js/components/progress-bar.min.js" type="text/javascript"></script>
-<script src="js/components/swiper.min.js" type="text/javascript"></script>
-<script src="js/components/wow.min.js" type="text/javascript"></script><!-- END BODY -->
-</body></html>
+</body>
+</html>
